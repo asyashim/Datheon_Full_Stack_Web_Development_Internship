@@ -1,4 +1,5 @@
-import { formatDate, isOverdue } from "../utils/dateUtils.js";
+import { formatDate, getDueDateStatus } from "../utils/dateUtils.js";
+
 
 export function renderTasks(tasks, taskList) {
 taskList.replaceChildren();
@@ -72,10 +73,16 @@ const dueDateBadge = createBadge(
 
 metadata.append(categoryBadge, priorityBadge, dueDateBadge);
 
-if (!task.completed && isOverdue(task.dueDate)) {
-    const overdueBadge = createBadge("Overdue", "task-overdue");
-    metadata.appendChild(overdueBadge);
+const dueDateStatus = getDueDateStatus(task.dueDate, task.completed);
+
+if (dueDateStatus === "overdue") {
+metadata.appendChild(createBadge("Overdue", "task-overdue"));
+} else if (dueDateStatus === "due-today") {
+metadata.appendChild(createBadge("Due today", "task-due-today"));
+} else if (dueDateStatus === "due-soon") {
+metadata.appendChild(createBadge("Due soon", "task-due-soon"));
 }
+
 
 content.appendChild(metadata);
 

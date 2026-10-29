@@ -197,18 +197,31 @@
                 <label class="filter-control">
                     <span class="visually-hidden">Filter by priority</span>
 
-                    <select id="priority-filter">
-                        <option value="all">All Priorities</option>
-                        <option value="high">High Priority</option>
-                        <option value="medium">Medium Priority</option>
-                        <option value="low">Low Priority</option>
+                   <select id="priority-filter" aria-label="Filter tasks by priority">
+    <option value="all">All Priorities</option>
+    <option value="high">High Priority</option>
+    <option value="medium">Medium Priority</option>
+    <option value="low">Low Priority</option>
+</select>
+                </label>
+
+                <label class="filter-control">
+                    <span class="visually-hidden">Filter by category</span>
+
+                    <select id="category-filter" aria-label="Filter tasks by category">
+                        <option value="all">All Categories</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Study">Study</option>
+                        <option value="Health">Health</option>
+                        <option value="Other">Other</option>
                     </select>
                 </label>
 
                 <label class="filter-control">
                     <span class="visually-hidden">Sort tasks</span>
 
-                    <select id="sort-tasks">
+                    <select id="sort-tasks" aria-label="Sort tasks">
                         <option value="newest">Newest First</option>
                         <option value="oldest">Oldest First</option>
                         <option value="dueDate">Due Date</option>
@@ -242,6 +255,10 @@
 <dialog id="task-dialog" class="task-dialog">
 
     <form id="task-form" class="task-form">
+        
+<div id="form-error" class="form-error" role="alert" hidden></div>
+
+
 
         <div class="dialog-heading">
             <div>
@@ -340,6 +357,16 @@
     </form>
 
 </dialog>
+
+<div
+    id="success-message"
+    class="success-message"
+    role="status"
+    aria-live="polite"
+    hidden
+></div>
+
+
 
 
 </body>
