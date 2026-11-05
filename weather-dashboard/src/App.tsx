@@ -1,0 +1,110 @@
+import { useState } from 'react';
+import SearchBar from './components/SearchBar';
+import './App.css';
+
+
+type WeatherData = {
+  name: string;
+  sys: {
+    country: string;
+  };
+  main: {
+    temp: number;
+    humidity: number;
+    pressure: number;
+  };
+  weather: {
+    main: string;
+    description: string;
+    icon: string;
+  }[];
+  wind: {
+    speed: number;
+  };
+};
+
+function App() {
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+
+  const fetchWeather = async (searchedCity: string) => {
+  try {
+    const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
+
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(searchedCity)}&appid=${apiKey}&units=metric`
+    );
+
+    if (!response.ok) {
+      throw new Error('Unable to fetch weather data');
+    }
+
+    const data: WeatherData = await response.json();
+
+    setWeather(data);
+
+  } catch (error) {
+    console.error('Weather API error:', error);
+  }
+};
+
+  const handleSearch = (searchedCity: string) => {
+    setCity(searchedCity);
+    fetchWeather(searchedCity);
+  };
+
+  return (
+    <div className="weather-app">
+      <header>
+        <h1>Weather Dashboard</h1>
+        <p>Check the weather anywhere in the world.</p>
+      </header>
+
+      <SearchBar onSearch={handleSearch} />
+
+      {city && (
+        <p className="search-result">
+          Searching weather for: {city}
+        </p>
+      )}
+
+     <main className="weather-content">
+  {weather && (
+    <>
+      <section className="current-weather">
+        <h2>Current Weather</h2>
+
+        <h1>{Math.round(weather.main.temp)}°C</h1>
+
+        <p>
+          {weather.name}, {weather.sys.country}
+        </p>
+
+        <p>{weather.weather[0].description}</p>
+      </section>
+
+      <section className="weather-details">
+        <div>
+          <h3>Humidity</h3>
+          <p>{weather.main.humidity}%</p>
+        </div>
+
+        <div>
+          <h3>Wind Speed</h3>
+          <p>{(weather.wind.speed * 3.6).toFixed(1)} km/h</p>
+        </div>
+
+        <div>
+          <h3>Pressure</h3>
+          <p>{weather.main.pressure} hPa</p>
+        </div>
+      </section>
+    </>
+  )}
+</main>
+       
+    </div>
+  );
+}
+
+export default App;

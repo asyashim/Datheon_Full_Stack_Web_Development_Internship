@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #74b9ff, #a29bfe);
+  min-height: 100vh;
+}
+
+.weather-app {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  text-align: center;
+}
+
+header h1 {
+  color: white;
+  font-size: 36px;
+}
+
+header p {
+  color: white;
+}
+
+.weather-content {
+  margin-top: 40px;
+}
+
+.current-weather {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.current-weather h1 {
+  font-size: 55px;
+  color: #0984e3;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.weather-details div {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1;
+}
+
+.weather-details h3 {
+  color: #636e72;
+}
+
+.weather-details p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-bar input {
+  padding: 12px;
+  width: 300px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #0984e3;
+  color: white;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #0769b5;
+}
+
+.error-message {
+  color: red;
+  width: 100%;
+}
