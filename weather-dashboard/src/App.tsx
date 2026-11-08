@@ -23,11 +23,25 @@ type WeatherData = {
   };
 };
 
+type ForecastData = {
+  list: {
+    dt_txt: string;
+    main: {
+      temp: number;
+    };
+    weather: {
+      description: string;
+      icon: string;
+    }[];
+  }[];
+};
+
 function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error,setError] =useState('')
+  const [error,setError] =useState('');
+  const [forecast, setForecast] = useState<ForecastData | null>(null);
 
   const fetchWeather = async (searchedCity: string) => {
   setLoading(true);
@@ -53,6 +67,19 @@ function App() {
 
     setWeather(data);
 
+    const forecastResponse = await fetch(
+  `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(searchedCity)}&appid=${apiKey}&units=metric`
+);
+
+if (!forecastResponse.ok) {
+  throw new Error('Unable to fetch forecast data.');
+}
+
+const forecastData: ForecastData = await forecastResponse.json();
+
+setForecast(forecastData);
+
+
   }catch (error) {
   if (error instanceof Error) {
     setError(error.message);
@@ -70,6 +97,22 @@ function App() {
     setCity(searchedCity);
     fetchWeather(searchedCity);
   };
+
+  const dailyForecast = forecast?.list.reduce((days, item) => {
+  const date = item.dt_txt.split(' ')[0];
+
+  if (!days[date]) {
+    days[date] = item;
+  }
+
+  return days;
+}, {} as Record<string, ForecastData['list'][number]>);
+
+const fiveDayForecast = dailyForecast
+  ? Object.values(dailyForecast).slice(0, 5)
+  : [];
+
+
 
   return (
     <div className="weather-app">
@@ -124,6 +167,33 @@ function App() {
           <p>{weather.main.pressure} hPa</p>
         </div>
       </section>
+      {fiveDayForecast.length > 0 && (
+  <section className="forecast-section">
+    <h2>5-Day Forecast</h2>
+
+    <div className="forecast-container">
+      {fiveDayForecast.map((item) => (
+        <div className="forecast-card" key={item.dt_txt}>
+          <p>
+  {new Date(`${item.dt_txt.split(' ')[0]}T12:00:00`).toLocaleDateString(
+    'en-US',
+    { weekday: 'short' }
+  )}
+</p>
+
+          <img
+            src={`https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
+            alt={item.weather[0].description}
+          />
+
+          <h3>{Math.round(item.main.temp)}°C</h3>
+
+          <p>{item.weather[0].description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+)}
     </>
   )}
 </main>

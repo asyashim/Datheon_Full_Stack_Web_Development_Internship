@@ -117,3 +117,45 @@ header p {
   display: block;
   margin: 0 auto;
 }
+
+.forecast-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.forecast-section h2 {
+  color: #2d3436;
+  margin-bottom: 20px;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.forecast-card {
+  background-color: white;
+  width: 150px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.forecast-card h3 {
+  color: #0984e3;
+  font-size: 22px;
+}
+
+.forecast-card p {
+  color: #2d3436;
+  font-size: 14px;
+}
