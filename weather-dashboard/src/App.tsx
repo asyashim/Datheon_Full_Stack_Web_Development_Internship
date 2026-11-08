@@ -26,8 +26,12 @@ type WeatherData = {
 function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState<WeatherData | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchWeather = async (searchedCity: string) => {
+  setLoading(true);
+  
+
   try {
     const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
@@ -45,6 +49,9 @@ function App() {
 
   } catch (error) {
     console.error('Weather API error:', error);
+
+  } finally {
+    setLoading(false);
   }
 };
 
@@ -69,6 +76,7 @@ function App() {
       )}
 
      <main className="weather-content">
+     {loading && <p className="loading-message">Loading weather data...</p>}
   {weather && (
     <>
       <section className="current-weather">

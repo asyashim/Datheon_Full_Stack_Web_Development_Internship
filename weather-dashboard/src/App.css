@@ -30,7 +30,7 @@ header p {
 }
 
 .current-weather {
-  background: white;
+  background: rgba(255, 255, 255, 0.953);
   padding: 30px;
   border-radius: 15px;
   margin-bottom: 20px;
@@ -39,6 +39,9 @@ header p {
 .current-weather h1 {
   font-size: 55px;
   color: #0984e3;
+}
+.cuurent-weather h2{
+  color:#636e72;
 }
 
 .weather-details {
@@ -94,4 +97,15 @@ header p {
 .error-message {
   color: red;
   width: 100%;
+}
+
+.loading-message {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+.search-result {
+  color: white;
+  font-size: 18px;
 }
