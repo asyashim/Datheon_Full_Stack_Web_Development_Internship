@@ -27,10 +27,12 @@ function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error,setError] =useState('')
 
   const fetchWeather = async (searchedCity: string) => {
   setLoading(true);
-  
+  setError(''); // Reset error state before fetching new data
+  setWeather(null);
 
   try {
     const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY;
@@ -40,17 +42,26 @@ function App() {
     );
 
     if (!response.ok) {
-      throw new Error('Unable to fetch weather data');
-    }
+  if (response.status === 404) {
+    throw new Error('City not found. Please enter a valid city name.');
+  }
+
+  throw new Error('Something went wrong. Please try again.');
+}
 
     const data: WeatherData = await response.json();
 
     setWeather(data);
 
-  } catch (error) {
-    console.error('Weather API error:', error);
+  }catch (error) {
+  if (error instanceof Error) {
+    setError(error.message);
+  } else {
+    setError('Something went wrong.');
+  }
+}
 
-  } finally {
+   finally {
     setLoading(false);
   }
 };
@@ -77,6 +88,7 @@ function App() {
 
      <main className="weather-content">
      {loading && <p className="loading-message">Loading weather data...</p>}
+     {error && <p className="error-message">{error}</p>}
   {weather && (
     <>
       <section className="current-weather">
