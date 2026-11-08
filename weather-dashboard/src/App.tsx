@@ -100,6 +100,11 @@ function App() {
           {weather.name}, {weather.sys.country}
         </p>
 
+        <img
+  src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+  alt={weather.weather[0].description}
+/>
+
         <p>{weather.weather[0].description}</p>
       </section>
 

@@ -109,3 +109,11 @@ header p {
   color: white;
   font-size: 18px;
 }
+
+.current-weather img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
