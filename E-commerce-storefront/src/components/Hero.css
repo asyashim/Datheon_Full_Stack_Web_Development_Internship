@@ -1,0 +1,18 @@
+.main-content {
+  text-align: center;
+  padding: 70px 20px;
+  background-color: #f8fafc;
+}
+
+.main-content h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.main-content p {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}

@@ -1,0 +1,35 @@
+/* Product Card */
+.product-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Product Title */
+.product-card h3 {
+  min-height: 66px;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: auto;
+  border: none;
+  border-radius: 8px;
+  background-color: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover */
+.add-to-cart-btn:hover {
+  background-color: #1d4ed8;
+}
