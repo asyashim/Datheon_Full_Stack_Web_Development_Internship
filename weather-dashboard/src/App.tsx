@@ -177,10 +177,10 @@ function App() {
         weather ? weather.weather[0].main.toLowerCase() : ''
       }`}
     >
-      <header>
-        <h1>Weather Dashboard</h1>
-        <p>Check the weather anywhere in the world.</p>
-      </header>
+     <header>
+  <h1>🌤️ Weatherly</h1>
+  <p>Your world, your weather.</p>
+</header>
 
       <SearchBar onSearch={handleSearch} />
 
@@ -202,20 +202,20 @@ function App() {
         {weather && (
           <>
             <section className="current-weather">
-              <h2>Current Weather</h2>
+  <h2>
+    {weather.name}, {weather.sys.country}
+  </h2>
 
-              <h1>{Math.round(weather.main.temp)}°C</h1>
+  <h1>{Math.round(weather.main.temp)}°C</h1>
 
-              <p>
-                {weather.name}, {weather.sys.country}
-              </p>
+  <div className="current-weather-icon">
+    {getWeatherIcon(weather.weather[0].description)}
+  </div>
 
-              <div className="current-weather-icon">
-                {getWeatherIcon(weather.weather[0].description)}
-              </div>
-
-              <p>{weather.weather[0].description}</p>
-            </section>
+  <p className="weather-description">
+    {weather.weather[0].description}
+  </p>
+</section>
 
             <section className="weather-details">
               <div>

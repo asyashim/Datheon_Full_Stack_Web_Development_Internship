@@ -26,20 +26,25 @@ body {
 }
 
 /* Header */
+/* Application Header */
+header {
+  margin-bottom: 30px;
+}
+
 header h1 {
   color: #ffffff;
-  font-size: 42px;
+  font-size: 46px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   margin-bottom: 8px;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.35);
 }
 
 header p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 16px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 15px;
   font-weight: 400;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   margin-top: 0;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
@@ -66,30 +71,37 @@ header p {
   gap: 5px;
 }
 
+/* City Name */
 .current-weather h2 {
   color: #2d3436;
-  font-size: 25px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   line-height: 1.4;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
   margin: 0 0 5px;
 }
 
+/* Temperature */
 .current-weather h1 {
-  font-size: 54px;
+  font-size: 68px;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.1;
   color: #0984e3;
-  margin: 2px 0;
-  letter-spacing: -2px;
+  margin: 5px 0;
+  letter-spacing: -3px;
 }
 
+/* Weather Description */
 .current-weather p {
   color: #636e72;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.6;
   margin: 3px 0;
 }
+
+
 
 /* Current weather icon */
 .current-weather-icon {
@@ -367,21 +379,19 @@ body:has(.weather-app) {
   }
 
   header h1 {
-    font-size: 30px;
+    font-size: 34px;
   }
 
   header p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .weather-content {
-    margin-top: 25px;
+    margin-top: 22px;
   }
 
   .current-weather {
-    padding: 20px 15px;
-    min-height: 250px;
-    gap: 5px;
+  font-size:52px;
   }
 
   .current-weather h2 {

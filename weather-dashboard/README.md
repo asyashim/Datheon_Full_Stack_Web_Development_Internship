@@ -1,75 +1,87 @@
-# React + TypeScript + Vite
+# 🌤️ Weather Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive weather application built with React and TypeScript that allows users to search for cities and view real-time weather information and a five-day forecast.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search for weather by city.
+- City autocomplete suggestions.
+- Spelling correction suggestions for popular cities.
+- Current temperature and weather conditions.
+- Humidity, wind speed, and atmospheric pressure.
+- Five-day weather forecast.
+- Dynamic backgrounds based on weather conditions.
+- Loading and error handling.
+- Responsive design for desktop and mobile devices.
 
-## React Compiler
+## 🛠️ Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- CSS3
+- OpenWeatherMap API
+- Open-Meteo Geocoding API
+- Lucide React
 
-## Expanding the ESLint configuration
+## 📸 Screenshots
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Main Weather Dashboard
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Weather Dashboard](screenshots/dashboard.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### City Autocomplete
+![City Autocomplete](screenshots/autocomplete.png)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Spelling Correction
+![Spelling Correction](screenshots/spelling-correction.png)
 
-```
+## ⚙️ Installation and Setup
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone the repository:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   
+   git clone https://github.com/asyashim/Datheon_Full_Stack_Web_Development_Internship.git
+   
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Navigate to the project folder:
 
-```
+   
+   cd Datheon_Full_Stack_Web_Development_Internship/weather-dashboard
+   
+
+3. Install dependencies:
+
+   
+   npm install
+   
+
+4. Create a `.env.local` file in the weather-dashboard folder.
+
+5. Add your OpenWeatherMap API key:
+
+   
+   VITE_OPENWEATHER_API_KEY=your_api_key_here
+   
+
+6. Start the development server:
+
+   
+   npm run dev
+   
+
+7. Open the local URL displayed in your terminal.
+
+## 🏗️ Production Build
+
+To create a production build:
+
+
+npm run build
+
+
+## 👩‍💻 Developer
+
+**Asyabi C.P.**
+
+MERN Stack Developer Trainee | React | TypeScript | Node.js
