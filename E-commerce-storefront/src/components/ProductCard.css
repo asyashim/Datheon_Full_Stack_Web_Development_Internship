@@ -33,3 +33,36 @@
 .add-to-cart-btn:hover {
   background-color: #1d4ed8;
 }
+
+.success-message {
+  color: #16a34a;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.add-to-cart-btn {
+  transition: all 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.95);
+}

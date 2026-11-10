@@ -1,7 +1,7 @@
 import { ShoppingBag } from 'lucide-react';
 import './Header.css';
 
-function Header() {
+function Header({cart}) {
   return (
     <header className="header">
 
@@ -13,15 +13,17 @@ function Header() {
 
       {/* Navigation Links */}
       <nav className="navigation">
-        <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">Categories</a>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#categories">Categories</a>
       </nav>
 
       {/* Shopping Cart */}
       <div className="cart-icon">
         <ShoppingBag size={24} />
-        <span>0</span>
+        <span>
+          {cart.reduce((total, item) => total + item.quantity, 0)}
+        </span>
       </div>
 
     </header>
