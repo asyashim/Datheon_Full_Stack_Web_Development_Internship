@@ -1,7 +1,7 @@
 import { ShoppingBag } from 'lucide-react';
 import './Header.css';
 
-function Header({cart}) {
+function Header({cart,onCartClick}) {
   return (
     <header className="header">
 
@@ -19,7 +19,7 @@ function Header({cart}) {
       </nav>
 
       {/* Shopping Cart */}
-      <div className="cart-icon">
+      <div className="cart-icon" onClick={onCartClick}>
         <ShoppingBag size={24} />
         <span>
           {cart.reduce((total, item) => total + item.quantity, 0)}
