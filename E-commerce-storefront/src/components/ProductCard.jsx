@@ -22,24 +22,41 @@ function ProductCard({ product, cart, setCart }) {
       return [...currentCart, { ...product, quantity: 1 }];
     });
 
-    // Display success message
     setShowMessage(true);
 
-    // Hide message after 1.5 seconds
     setTimeout(() => {
       setShowMessage(false);
     }, 1500);
   };
 
+  // Determine product badge
+  const rating = product.rating.rate;
+
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.title} />
+
+      {/* Product Image and Badge */}
+      <div className="product-image-container">
+        <img src={product.image} alt={product.title} />
+
+        {rating >= 4.5 && (
+          <span className="product-badge top-rated">
+            Top Rated
+          </span>
+        )}
+
+        {rating >= 4 && rating < 4.5 && (
+          <span className="product-badge popular">
+            Popular
+          </span>
+        )}
+      </div>
 
       <h3>{product.title}</h3>
 
       <p>${product.price}</p>
 
-      <p>⭐ {product.rating.rate}</p>
+      <p>⭐ {rating}</p>
 
       <button
         className="add-to-cart-btn"
@@ -54,6 +71,7 @@ function ProductCard({ product, cart, setCart }) {
           ✓ Added to cart!
         </p>
       )}
+
     </div>
   );
 }

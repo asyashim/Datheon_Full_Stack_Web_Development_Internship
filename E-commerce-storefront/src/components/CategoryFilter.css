@@ -25,3 +25,36 @@
   color: #ffffff;
   border-color: #2563eb;
 }
+
+/* Active Category */
+.category-filter button.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .category-filter {
+    gap: 12px;
+    padding: 10px 20px 25px;
+  }
+
+  .category-filter button {
+    padding: 9px 18px;
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .category-filter {
+    gap: 8px;
+    padding: 10px 12px 20px;
+  }
+
+  .category-filter button {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
